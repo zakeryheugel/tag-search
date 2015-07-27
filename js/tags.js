@@ -66,7 +66,7 @@ function createTag(input) {
 			if($( "#"+y ).length==0){
 				$("#"+input+"-holder").append("<li id='"+y+"'>"+a+"</li>");
 				$( "#"+y ).hide().fadeIn();
-				$( "#"+y ).append("<a onclick='removeTag(\""+y+"\")'<button type='submit' class='btn' id='tag-close-button'><span class='glyphicon glyphicon-remove-circle remove-Tag'></span></button>");
+				$( "#"+y ).append("<a onclick='removeTag(\""+y+"\")'<button type='submit' class='btn' id='tag-close-button'><span class='glyphicon glyphicon-remove remove-Tag'></span></button>");
 			}
 		}
 		$input.val("")
