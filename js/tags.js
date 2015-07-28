@@ -48,8 +48,8 @@ $(document).ready(function() {
 
 //------------------------------------------------------------------------------------------
 function setUp() {
-	$("#gear-search-wrapper").prepend("<input id='gear-search' class='form-control tag-search' placeholder='Add gear!' /><a onclick='createTag(\"gear-search\")'><button type='submit' class='btn btn-success tag-search-button'><i class='glyphicon glyphicon-plus'></i></button></a>");
-	$("#activities-search-wrapper").prepend("<input id='activities-search' class='form-control tag-search' placeholder='Add activities!' /><a onclick='createTag(\"activities-search\")'><button type='submit' class='btn btn-success tag-search-button'><i class='glyphicon glyphicon-plus'></i></button></a>");
+	$("#gear-search-wrapper").prepend("<input id='gear-search' class='form-control tag-search' placeholder='Add gear' /><a onclick='createTag(\"gear-search\")'><button type='submit' class='btn btn-success tag-search-button'><i class='glyphicon glyphicon-plus'></i></button></a>");
+	$("#activities-search-wrapper").prepend("<input id='activities-search' class='form-control tag-search' placeholder='Add activities' /><a onclick='createTag(\"activities-search\")'><button type='submit' class='btn btn-success tag-search-button'><i class='glyphicon glyphicon-plus'></i></button></a>");
 }
 
 function createTag(input) {
@@ -63,7 +63,7 @@ function createTag(input) {
 	if($validated === $unvalidated) {
 		a = $input.val(),
 		b = a.charAt(0).toUpperCase() + a.slice(1),
-		x = a.replace(/\+/g, "_"),
+		x = a.replace(/\+/g, "_").toLowerCase(),
 		y = input + x.replace(/\s+/g, '-'),
 		z = "http://lmgtfy.com?q="+a.replace(/\s+/g, '\+');//link to tag gained from json object
 		if (a) {
