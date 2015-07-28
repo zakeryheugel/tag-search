@@ -1,6 +1,6 @@
 /*Looks*/
 .tag-search {width:225px;}
-.tag-search-button {border-radius:0px 4px 4px 0px;color:#000;}
+.tag-search-button {border-radius:0px 4px 4px 0px;}
 
 .tag-holder li {
 	background-color:#ccc;
@@ -9,12 +9,14 @@
 }
 .tag-holder li:hover {}
 
-.tag-holder li a {background-color:transparent;color:#000;}
-.tag-holder li a:hover {background-color:#f00;}
-.remove-Tag {font-size:18px;}
+.tag-holder li a {}
+.tag-holder li a:hover {}
+.remove-Tag {}
 
 /*Structure*/
 .tag-holder {margin:0px;padding:0px;position:relative;}
-.tag-holder li {display:block;float:left;padding-left:5px;margin:0px 0px 10px 10px;border-radius:5px;vertical-align:center;position:relative;}
+.tag-holder li {display:block;float:left;margin:0px 0px 10px 10px;border-radius:5px;vertical-align:center;position:relative;}
 .tag-holder li:hover {cursor:default;}
-.tag-holder li a {margin-left:5px;border-radius:0px 5px 5px 0px;}
+.tag-holder li a {margin-left:10px;border-radius:0px 5px 5px 0px;}
+.tag-link-out{color:#000;text-decoration:none;}
+.tag-link-out:hover{color:#000;text-decoration:none;}

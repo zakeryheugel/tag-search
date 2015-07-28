@@ -1,42 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Tag Search</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!--Bootstrap-->
-	<link href="./css/bootstrap.min.css" rel="stylesheet">
+    <title>Tags</title>
+	
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 	
 	<!--Tag Searchbar-->
 	<link href="./css/easy-autocomplete.css" rel="stylesheet">
 	<link href="./css/tags.css" rel="stylesheet">
-	<style>
+  </head>
+  <style type="text/css">
 		body {height:100%;width:100%;background-color:#666;transparent:0.2;}
 		.wrapper {border:solid black 1px;width:1100px;height:500px;position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;padding:10px;border-radius:5px;background-color:#eee;}
 		#gear-search-wrapper {float:left;}
-		#other-search-wrapper {float:left;}
-		.tag-holder {width:775px;float:left;}
+		#activities-search-wrapper {float:left;}
+		.tag-holder {width:700px;float:left;}
 		.row {width:1100px;clear:both;padding:10px;}
-	</style>
-  </head>
 
+  </style>
   <body>
-	<div class="wrapper">
+  	<div class="wrapper">
 		<div class="row">
 			<div id="gear-search-wrapper"></div>
 			<ul id="gear-search-holder" class="tag-holder"></ul>
 		</div>
 		<div class="row">
-			<div id="other-search-wrapper"></div>
-			<ul id="other-search-holder" class="tag-holder"></ul>
+			<div id="activities-search-wrapper"></div>
+			<ul id="activities-search-holder" class="tag-holder"></ul>
 		</div>
 	</div>
 
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="./js/jquery-1.11.3.js"></script>
-    
-	<!--Auto complete-->
-	<script src="./js/jquery.easy-autocomplete.js"></script> 
 	
+	
+	
+	
+	
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	
+		<!--Auto complete & Tags-->
+	<script src="./js/jquery.easy-autocomplete.js"></script>	
 	<script src="./js/tags.js"></script>
+	
+	
+    <script type="text/javascript">
+      $(document).ready(function(){
+        //$("#gear-search-wrapper").popover({placement : 'top'}, 'show');
+
+      });
+    </script>
   </body>
 </html>

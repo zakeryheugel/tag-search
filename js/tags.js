@@ -22,8 +22,8 @@ $(document).ready(function() {
 		if(e.keyCode == 13){createTag("gear-search");}
 	})
 	
-	var $otherSearch = $("#other-search"),
-	otherOptions = {
+	var $activitiesSearch = $("#activities-search"),
+	activitiesOptions = {
 		data: ["Adventure Racing","Archery","Aviation","Biking","Canoeing","Kayaking","Caving","Climbing","Mountaineering","Coasteering","Conservation","Diving","Fire-Walking","Gliding","Go-Karting","Horse-Riding","Paintball","Rafting","Sailing","Skiing","Surfing","Survival","Water-Skiing","Yachting"],
 		//url: "resources/tags.json",
 		//getValue: "name",
@@ -31,7 +31,7 @@ $(document).ready(function() {
 			maxNumberOfElements: 5,
 			showAnimation: {type:"slide"},
 			hideAnimation: {type:"slide"},
-			onClickEvent: function() {createTag("other-search");}
+			onClickEvent: function() {createTag("activities-search");}
 		},
 		highlightPhrase: true,
 		cssClasses: ""
@@ -39,34 +39,42 @@ $(document).ready(function() {
 	
 	
 
-	$otherSearch.easyAutocomplete(otherOptions);
-	$otherSearch.keydown(function (e){
-		if(e.keyCode == 13){createTag("other-search");}
+	$activitiesSearch.easyAutocomplete(activitiesOptions);
+	$activitiesSearch.keydown(function (e){
+		if(e.keyCode == 13){createTag("activities-search");}
 	})
+	
 });
 
 //------------------------------------------------------------------------------------------
 function setUp() {
-	$("#gear-search-wrapper").prepend("<input id='gear-search' class='form-control tag-search' placeholder='Add gear!' /><a onclick='createTag(\"gear-search\")'><button type='submit' class='btn tag-search-button'><i class='glyphicon glyphicon-plus'></i></button></a>");
-	$("#other-search-wrapper").prepend("<input id='other-search' class='form-control tag-search' placeholder='Add other!' /><a onclick='createTag(\"other-search\")'><button type='submit' class='btn tag-search-button'><i class='glyphicon glyphicon-plus'></i></button></a>");
+	$("#gear-search-wrapper").prepend("<input id='gear-search' class='form-control tag-search' placeholder='Add gear!' /><a onclick='createTag(\"gear-search\")'><button type='submit' class='btn btn-success tag-search-button'><i class='glyphicon glyphicon-plus'></i></button></a>");
+	$("#activities-search-wrapper").prepend("<input id='activities-search' class='form-control tag-search' placeholder='Add activities!' /><a onclick='createTag(\"activities-search\")'><button type='submit' class='btn btn-success tag-search-button'><i class='glyphicon glyphicon-plus'></i></button></a>");
 }
 
 function createTag(input) {
-	//input = "gear-search";
 	$input = $("#"+input);
 	$input.css("border", "");
+	
+	$("#gear-search-wrapper").popover("destroy");
+	
 	$unvalidated = $input.val(),
 	$validated = $input.val().replace(/[^a-z0-9 + -]/gi, '');
 	if($validated === $unvalidated) {
 		a = $input.val(),
+		b = a.charAt(0).toUpperCase() + a.slice(1),
 		x = a.replace(/\+/g, "_"),
-		y = x.replace(/\s+/g, '-'),
-		z = 0;//link to tag gained from json object
+		y = input + x.replace(/\s+/g, '-'),
+		z = "http://lmgtfy.com?q="+a.replace(/\s+/g, '\+');//link to tag gained from json object
 		if (a) {
 			if($( "#"+y ).length==0){
-				$("#"+input+"-holder").append("<li id='"+y+"'>"+a+"</li>");
+				$("#"+input+"-holder").append("<li id='"+y+"'><a class='tag-link-out' href='"+z+"' target='_blank'>"+b+"</a></li>");
 				$( "#"+y ).hide().fadeIn();
-				$( "#"+y ).append("<a onclick='removeTag(\""+y+"\")'<button type='submit' class='btn' id='tag-close-button'><span class='glyphicon glyphicon-remove-circle remove-Tag'></span></button>");
+				$( "#"+y ).append("<a onclick='removeTag(\""+y+"\")'<button type='submit' class='btn btn-danger tag-close-button'><span class='glyphicon glyphicon-remove remove-Tag'></span></button>");
+			}
+			else {
+				$input.css("border", "1px solid red");
+				showPopover(input,"Tag already exists.");
 			}
 		}
 		$input.val("")
@@ -74,12 +82,29 @@ function createTag(input) {
 	else {
 		//alert("Invalid tag.");
 		$input.css("border", "1px solid red");
+		showPopover(input,"Invalid Characters.");
 	}
 }
+
+	function showPopover(field,message) {
+		$field = $("#"+field+"-wrapper")
+		$field.attr("data-toggle", "popover");
+		$field.attr("data-content", message);
+		$field.popover({placement:'right'});
+		$field.popover("show");
+		$field
+			.delay(3000)
+			.queue(function(){$field.popover("destroy");});
+	}
 
 function removeTag(y) {
 	$("#"+y)
 		.fadeOut()
 		.delay()
-		.queue(function(){$( "#"+y ).remove()})
+		.queue(function(){$( "#"+y ).remove()});
+}
+
+function invalidTag(a) {
+	message = "Invalid Tag.";
+	$("#"+a).prepend("<div class='tags-error-message'><div></div>")
 }
