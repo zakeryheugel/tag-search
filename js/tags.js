@@ -1,4 +1,3 @@
-$(document).ready(function() {
  //Allowing CORS (Cross-Origin Resource Sharing) requests from
  // grunt server, put this into Gruntfile.js
  grunt.initConfig({
@@ -20,6 +19,8 @@ $(document).ready(function() {
       }
     }
   });
+
+$(document).ready(function() {
 	setUp();
 	var $gearSearch = $("#gear-search"),
 	gearOptions = {
