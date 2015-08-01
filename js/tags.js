@@ -3,7 +3,7 @@ $(document).ready(function() {
 	var $gearSearch = $("#gear-search"),
 	gearOptions = {
 		//data: ["Adventure Racing","Archery","Aviation","Biking","Canoeing","Kayaking","Caving","Climbing","Mountaineering","Coasteering","Conservation","Diving","Fire-Walking","Gliding","Go-Karting","Horse-Riding","Paintball","Rafting","Sailing","Skiing","Surfing","Survival","Water-Skiing","Yachting"],
-		url: "http://wry.ninja:9601/api/gear",
+		url: "http://wry.ninja/stylesheets/tags.json",
 		getValue: "name",
 		list: {
 			maxNumberOfElements: 5,
