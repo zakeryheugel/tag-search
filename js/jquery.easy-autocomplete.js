@@ -10,7 +10,11 @@
 /*
  * EasyAutocomplete - Configuration 
  */
+<<<<<<< HEAD
 var EasyAutocomplete = (function(scope){
+=======
+var EasyAutocomplete = (function(scope){//options defaults
+>>>>>>> origin/master
 
 	scope.Configuration = function Configuration(options) {
 		var defaults = {
@@ -22,7 +26,11 @@ var EasyAutocomplete = (function(scope){
 				return data;
 			},
 
+<<<<<<< HEAD
 			xmlElementName: "",
+=======
+			//xmlElementName: "",
+>>>>>>> origin/master
 
 			getValue: function(element) {
 				return element;
@@ -39,7 +47,11 @@ var EasyAutocomplete = (function(scope){
 
 			list: {
 				sort: {
+<<<<<<< HEAD
 					enabled: false,
+=======
+					enabled: true,
+>>>>>>> origin/master
 					method: function(a, b) {
 						a = defaults.getValue(a);
 						b = defaults.getValue(b);
@@ -56,7 +68,11 @@ var EasyAutocomplete = (function(scope){
 				maxNumberOfElements: 6,
 
 				match: {
+<<<<<<< HEAD
 					enabled: false,
+=======
+					enabled: true,
+>>>>>>> origin/master
 					caseSensitive: false,
 					method: function(a, b) {
 						a = defaults.getValue(a);
@@ -76,11 +92,16 @@ var EasyAutocomplete = (function(scope){
 				},
 
 				hideAnimation: {
+<<<<<<< HEAD
 					type: "normal",
+=======
+					type: "normal",//normal|slide|fade
+>>>>>>> origin/master
 					time: 400,
 					callback: function() {}
 				},
 
+<<<<<<< HEAD
 				topBar: function(phrase) {
 				},
 
@@ -94,10 +115,20 @@ var EasyAutocomplete = (function(scope){
 				onMouseOverEvent: function() {},
 				onMouseOutEvent: function() {},	
 
+=======
+				/* Events */
+				
+				onClickEvent: function() {},//when an item is clicked
+				onLoadEvent: function() {},//when items are displayed
+				onMouseOverEvent: function() {},
+				onMouseOutEvent: function() {},	
+				onEnterEvent: function() {},
+>>>>>>> origin/master
 			},
 
 			highlightPhrase: true,
 
+<<<<<<< HEAD
 			theme: "",
 
 			cssClasses: ""
@@ -106,6 +137,12 @@ var EasyAutocomplete = (function(scope){
 
 		prepareDefaults();
 
+=======
+			cssClasses: ""//additional css classes to be added to wrapper div
+
+		};
+
+>>>>>>> origin/master
 		mergeOptions();
 
 		addAjaxSettings();
@@ -136,12 +173,16 @@ var EasyAutocomplete = (function(scope){
 		this.checkRequiredProperties = function() {
 			for (var propertyName in defaults) {
 				if (defaults[propertyName] === "required") {
+<<<<<<< HEAD
 					logger.error("Option " + propertyName + " must be defined");
+=======
+>>>>>>> origin/master
 					return false;
 				}
 			}
 			return true;
 		};
+<<<<<<< HEAD
 		function prepareDefaults() {
 
 			if (options.dataType === "xml") {
@@ -192,6 +233,8 @@ var EasyAutocomplete = (function(scope){
 
 			}
 		}
+=======
+>>>>>>> origin/master
 
 		function mergeOptions() {
 
@@ -272,6 +315,7 @@ var EasyAutocomplete = (function(scope){
 
 })(EasyAutocomplete || {});
 
+<<<<<<< HEAD
 
 /*
  * EasyAutocomplete - Logger 
@@ -299,11 +343,21 @@ var EasyAutocomplete = (function(scope){
  * EasyAutocomplete - Constans
  */
 var EasyAutocomplete = (function(scope){	
+=======
+/*
+ * EasyAutocomplete - Constans
+ */
+var EasyAutocomplete = (function(scope){//class and id handles
+>>>>>>> origin/master
 	
 	scope.Constans = function Constans() {
 		var constants = {
 			CONTAINER_CLASS: "easy-autocomplete-container",
+<<<<<<< HEAD
 			CONTAINER_ID: "eac-container-",
+=======
+			CONTAINER_ID: "eac-container-",//will have numbers added after it
+>>>>>>> origin/master
 
 			WRAPPER_CSS_CLASS: "easy-autocomplete"
 		};
@@ -327,7 +381,11 @@ var EasyAutocomplete = (function(scope){
  * - show only matching list
  *
  */
+<<<<<<< HEAD
 var EasyAutocomplete = (function(scope) {
+=======
+var EasyAutocomplete = (function(scope) {//process data
+>>>>>>> origin/master
 
 	scope.proccess = function proccessData(config, list, phrase) {
 
@@ -340,6 +398,7 @@ var EasyAutocomplete = (function(scope) {
 		return list;
 
 
+<<<<<<< HEAD
 		function findMatch(list, phrase) {
 			var preparedList = [],
 				value = "";
@@ -351,6 +410,19 @@ var EasyAutocomplete = (function(scope) {
 					value = config.get("getValue")(list[i]);
 					
 					if (!config.get("list").match.caseSensitive) {
+=======
+		function findMatch(list, phrase) {//create list with any matches found
+			var preparedList = [],
+				value = "";
+
+			if (config.get("list").match.enabled) {//check for matches, if there are matches, they are the new list; if not, then the whole list 
+
+				for(var i = 0, length = list.length; i < length; i += 1) {//look for matches in list, add them to list
+
+					value = config.get("getValue")(list[i]);
+					
+					if (!config.get("list").match.caseSensitive) {//if caseSensitive is off, convert to lowercase
+>>>>>>> origin/master
 
 						if (typeof value === "string") {
 							value = value.toLowerCase();	
@@ -358,7 +430,11 @@ var EasyAutocomplete = (function(scope) {
 						
 						phrase = phrase.toLowerCase();
 					}
+<<<<<<< HEAD
 					if (value.search(phrase) > -1) {
+=======
+					if (value.search(phrase) > -1) {//if phrase is found in an item, push that item to preparedList
+>>>>>>> origin/master
 						preparedList.push(list[i]);
 					}
 					
@@ -371,7 +447,11 @@ var EasyAutocomplete = (function(scope) {
 			return preparedList;
 		}
 
+<<<<<<< HEAD
 		function reduceElementsInList(list) {
+=======
+		function reduceElementsInList(list) {//trim list to maxNumberOfElements
+>>>>>>> origin/master
 			if (list.length > config.get("list").maxNumberOfElements) {
 				list = list.slice(0, config.get("list").maxNumberOfElements);
 			}
@@ -379,7 +459,11 @@ var EasyAutocomplete = (function(scope) {
 			return list;
 		}
 
+<<<<<<< HEAD
 		function sort(list) {
+=======
+		function sort(list) {//sort it
+>>>>>>> origin/master
 			if (config.get("list").sort.enabled) {
 				list.sort(config.get("list").sort.method);
 			}
@@ -395,6 +479,7 @@ var EasyAutocomplete = (function(scope) {
 
 })(EasyAutocomplete || {});
 
+<<<<<<< HEAD
 
 /*
  * EasyAutocomplete - Template 
@@ -560,10 +645,13 @@ var EasyAutocomplete = (function(scope){
 })(EasyAutocomplete || {});
 
 
+=======
+>>>>>>> origin/master
 /*
  * EasyAutocomplete - jQuery plugin for autocompletion
  *
  */
+<<<<<<< HEAD
 var EasyAutocomplete = (function(scope) {
 
 	
@@ -580,10 +668,20 @@ var EasyAutocomplete = (function(scope) {
 			proccessResponseData = scope.proccess,
 			checkParam = config.equals,
 
+=======
+var EasyAutocomplete = (function(scope) {//CORE
+	
+	scope.main = function Core($input, options) {
+		var consts = new scope.Constans(),
+			config = new scope.Configuration(options),
+			proccessResponseData = scope.proccess,
+			checkParam = config.equals,
+>>>>>>> origin/master
 			$field = $input, 
 			$container = "",
 			elementsList = [],
 			selectedElement = -1;
+<<<<<<< HEAD
 
 		this.getConstants = function() {
 			return consts;
@@ -626,6 +724,19 @@ var EasyAutocomplete = (function(scope) {
 
 				
 			if ($field.parent().hasClass(consts.getValue("WRAPPER_CSS_CLASS"))) {
+=======
+		this.getConstants = function() {return consts;};
+		this.getConfiguration = function() {return config;};
+		this.getContainer = function() {return $container;};
+		this.init = function() {init();};
+		function init() {
+			prepareField();
+			bindEvents();	
+		}
+		function prepareField() {//displays results
+				
+			if ($field.parent().hasClass(consts.getValue("WRAPPER_CSS_CLASS"))) {//if element has container and wrapper generated by this script, remove
+>>>>>>> origin/master
 				removeContainer();
 				removeWrapper();
 			} 
@@ -634,11 +745,17 @@ var EasyAutocomplete = (function(scope) {
 			createContainer();	
 
 			$container = $("#" + getContainerId());
+<<<<<<< HEAD
 			if (config.get("placeholder")) {
+=======
+			
+			if (config.get("placeholder")) {//if placeholder exists, put it in $field
+>>>>>>> origin/master
 				$field.attr("placeholder", config.get("placeholder"));
 			}
 
 
+<<<<<<< HEAD
 			function createWrapper() {
 				var $wrapper = $("<div>"),
 					classes = consts.getValue("WRAPPER_CSS_CLASS");
@@ -659,6 +776,17 @@ var EasyAutocomplete = (function(scope) {
 
 				$wrapper
 					.addClass(classes);
+=======
+			function createWrapper() {//creates wrapper div around the input, and runs adjustWrapperWidth()
+				var $wrapper = $("<div>"),
+					classes = consts.getValue("WRAPPER_CSS_CLASS");
+
+				if (config.get("cssClasses")) {//if cssClasses is not empty, add them to classes
+					classes += " " + config.get("cssClasses");
+				}
+
+				$wrapper.addClass(classes);
+>>>>>>> origin/master
 				$field.wrap($wrapper);
 
 
@@ -666,17 +794,29 @@ var EasyAutocomplete = (function(scope) {
 
 			}
 
+<<<<<<< HEAD
 			function adjustWrapperWidth() {
+=======
+			function adjustWrapperWidth() {//adjusts width of wrapper to width of field
+>>>>>>> origin/master
 				var fieldWidth = $field.outerWidth();
 
 				$field.parent().css("width", fieldWidth);				
 			}
 
+<<<<<<< HEAD
 			function removeWrapper() {
 				$field.unwrap();
 			}
 
 			function createContainer() {
+=======
+			function removeWrapper() {//removes wrapper div
+				$field.unwrap();
+			}
+
+			function createContainer() {//creates container and displays results
+>>>>>>> origin/master
 				var $elements_container = $("<div>").addClass(consts.getValue("CONTAINER_CLASS"));
 
 				$elements_container
@@ -684,11 +824,17 @@ var EasyAutocomplete = (function(scope) {
 						.prepend($("<ul>"));
 
 
+<<<<<<< HEAD
 				(function() {
 
 					$elements_container
 						/* List show animation */
 						.on("show", function() {
+=======
+				(function() {//define results, animate and display results
+					$elements_container
+						.on("show", function() {//cases for show animation revisit
+>>>>>>> origin/master
 
 							switch(config.get("list").showAnimation.type) {
 
@@ -712,8 +858,12 @@ var EasyAutocomplete = (function(scope) {
 							}
 							
 						})
+<<<<<<< HEAD
 						/* List hide animation */
 						.on("hide", function() {
+=======
+						.on("hide", function() {//cases for hide animation revisit
+>>>>>>> origin/master
 
 							switch(config.get("list").hideAnimation.type) {
 
@@ -736,6 +886,7 @@ var EasyAutocomplete = (function(scope) {
 								break;
 							}
 						})
+<<<<<<< HEAD
 						.on("selectElement", function(event, selected) {
 							$elements_container.find("ul li").removeClass("selected");
 							$elements_container.find("ul li:nth-child(" + (selectedElement + 1) + ")").addClass("selected");
@@ -757,34 +908,74 @@ var EasyAutocomplete = (function(scope) {
 								
 
 								(function() {
+=======
+						.on("selectElement", function(event, selected) {//when a list item is selected, add the selected class to it
+							$elements_container.find("ul li").removeClass("selected");//remove selected class from all list items
+							$elements_container.find("ul li:nth-child(" + (selectedElement + 1) + ")").addClass("selected");//add selected class to the appropriate item
+						})
+						.on("loadElements", function(event, list, phrase) {//define and display results
+
+						var $item = "",
+								$list = $("<ul>"),
+								$listContainer = $elements_container.find("ul");
+
+							$listContainer.empty().detach();//clear results
+
+
+							for(var i = 0, length = list.length; i < length; i += 1) {//define results, add event handlers
+								$item = $("<li><div class='eac-item'></div></li>");
+								
+
+								(function() {//event handler
+>>>>>>> origin/master
 									var j = i,
 										elementsValue = config.get("getValue")(list[j]);
 
 									$item.find(" > div")
+<<<<<<< HEAD
 										.on("click", function() {
+=======
+										.on("click", function() {//onclick
+>>>>>>> origin/master
 
 											$field.val(elementsValue);
 											selectElement(j);
 
+<<<<<<< HEAD
 											config.get("list").onClickEvent();
 										})
 										.mouseover(function() {
+=======
+											config.get("list").onClickEvent();//call the onClickEvent defined in options
+										})
+										.mouseover(function() {//onmouseover
+>>>>>>> origin/master
 
 											selectedElement = j;
 											selectElement(j);	
 
+<<<<<<< HEAD
 											config.get("list").onMouseOverEvent();
 										})
 										.mouseout(function() {
 											config.get("list").onMouseOutEvent();
 										})
 										.html(template.build(highlight(elementsValue, phrase), list[j]));
+=======
+											config.get("list").onMouseOverEvent();//call the onMouseOverEvent defined in options
+										})
+										.mouseout(function() {//onmouseout
+											config.get("list").onMouseOutEvent();//call the onMouseOutEvent defined in options
+										})
+										.html(highlight(elementsValue, phrase), list[j]);
+>>>>>>> origin/master
 								})();
 
 								$listContainer.append($item);
 								
 							}
 
+<<<<<<< HEAD
 							$elements_container.empty();
 
 							$elements_container.append(config.get("list").topBar(phrase));
@@ -807,6 +998,24 @@ var EasyAutocomplete = (function(scope) {
 			}
 
 			function highlight(string, phrase) {
+=======
+							$elements_container.empty();//visually clear the results
+
+							$elements_container.append($listContainer);//display the results
+
+							config.get("list").onLoadEvent();//call the onLoadEvent defined in options (empty by default)
+						});
+				})();
+
+				$field.after($elements_container);//inserts results after the input field
+			}
+
+			function removeContainer() {//removes container after input field
+				$field.next("." + consts.getValue("CONTAINER_CLASS")).remove();
+			}
+
+			function highlight(string, phrase) {//check if any phrases match, if they do: highlightPhrase()
+>>>>>>> origin/master
 
 				if(config.get("highlightPhrase") && phrase !== "") {
 					return highlightPhrase(string, phrase);	
@@ -816,14 +1025,22 @@ var EasyAutocomplete = (function(scope) {
 					
 			}
 
+<<<<<<< HEAD
 			function highlightPhrase(string, phrase) {
+=======
+			function highlightPhrase(string, phrase) {//replaces phrase with a bold version
+>>>>>>> origin/master
 				return (string + "").replace(new RegExp("(" + phrase + ")", "gi") , "<b>$1</b>");
 			}
 
 
 
 		}
+<<<<<<< HEAD
 		function getContainerId() {
+=======
+		function getContainerId() {//gets the container id, if it does not exist, do random calculation until one is found.
+>>>>>>> origin/master
 			
 			var elementId = $field.attr("id");
 
@@ -839,7 +1056,11 @@ var EasyAutocomplete = (function(scope) {
 
 			return elementId;
 		}
+<<<<<<< HEAD
 		function bindEvents() {
+=======
+		function bindEvents() {//binds keys for moving around the results. revisit to add enter key functionality
+>>>>>>> origin/master
 
 			bindAllEvents();
 			
@@ -856,7 +1077,11 @@ var EasyAutocomplete = (function(scope) {
 				bindBlur();
 			}
 
+<<<<<<< HEAD
 			function bindKeyup() {
+=======
+			function bindKeyup() {//on up arrow
+>>>>>>> origin/master
 				$field
 				.off("keyup")
 				.keyup(function(event) {
@@ -970,12 +1195,17 @@ var EasyAutocomplete = (function(scope) {
 									config.get("ajaxCallback")();
 
 								})
+<<<<<<< HEAD
 								.fail(function() {
 									logger.warning("Fail to load response data");
 								})
 								.always(function() {
 
 								});
+=======
+								.fail(function() {})
+								.always(function() {});
+>>>>>>> origin/master
 						}
 
 						function convertXmlToList(list) {
@@ -1023,7 +1253,11 @@ var EasyAutocomplete = (function(scope) {
 				});
 			}
 
+<<<<<<< HEAD
 			function bindKeydown() {
+=======
+			function bindKeydown() {//on down arrow
+>>>>>>> origin/master
 				$field
 					.on("keydown", function(evt) {
 	        		    evt = evt || window.event;
@@ -1040,18 +1274,30 @@ var EasyAutocomplete = (function(scope) {
 						$field.val(config.get("getValue")(elementsList[selectedElement]));
 						selectedElement = -1;
 						hideContainer();
+<<<<<<< HEAD
+=======
+						config.get("list").onClickEvent();//call the onClickEvent defined in options
+>>>>>>> origin/master
 
 						event.preventDefault();
 					}
 				});
 			}
 
+<<<<<<< HEAD
 			function bindKeypress() {
+=======
+			function bindKeypress() {//prevents all other keypresses from doing anything
+>>>>>>> origin/master
 				$field
 				.off("keypress");
 			}
 
+<<<<<<< HEAD
 			function bindFocus() {
+=======
+			function bindFocus() {//if field is not empty, and results are found, show them and select none
+>>>>>>> origin/master
 				$field.focus(function() {
 
 					if ($field.val() !== "" && elementsList.length > 0) {
@@ -1063,7 +1309,11 @@ var EasyAutocomplete = (function(scope) {
 				});
 			}
 
+<<<<<<< HEAD
 			function bindBlur() {
+=======
+			function bindBlur() {//hide the results
+>>>>>>> origin/master
 				$field.blur(function() {
 					setTimeout(function() { 
 						
@@ -1073,11 +1323,16 @@ var EasyAutocomplete = (function(scope) {
 				});
 			}
 
+<<<<<<< HEAD
 			function removeAutocomplete() {
+=======
+			function removeAutocomplete() {//remove Autocomplete
+>>>>>>> origin/master
 				$field.attr("autocomplete","off");
 			}
 
 		}
+<<<<<<< HEAD
 
 		function showContainer() {
 			$container.trigger("show");
@@ -1106,6 +1361,28 @@ var EasyAutocomplete = (function(scope) {
 
 	return scope;
 
+=======
+		function showContainer() {//shows results
+			$container.trigger("show");
+			selectElement(selectedElement);
+		}
+		function hideContainer() {//hides results
+			$container.trigger("hide");
+		}
+		function selectElement(index) {//selects the appropriate element
+			
+			$container.trigger("selectElement", index);
+		}
+		function loadElements(list, phrase) {//loads results
+			$container.trigger("loadElements", [list, phrase]);
+		}
+		function loseFieldFocus() {//hides results
+			$field.trigger("blur");
+		}
+	};
+
+	return scope;
+>>>>>>> origin/master
 })(EasyAutocomplete || {});
 
 
@@ -1113,3 +1390,7 @@ $.fn.easyAutocomplete = function(options) {
 	new EasyAutocomplete.main(this, options).init();
 };
 
+<<<<<<< HEAD
+=======
+//config.get("list").onClickEvent();//call the onClickEvent defined in options
+>>>>>>> origin/master
