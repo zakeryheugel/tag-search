@@ -1,24 +1,24 @@
- //Allowing CORS (Cross-Origin Resource Sharing) requests from
- // grunt server, put this into Gruntfile.js
- grunt.initConfig({
-    connect: {
-      livereload: {
-        options: {
-          port: 9000,
-          hostname: 'localhost',
-          middleware: function (connect) {
-            return [
-              function(req, res, next) {
-                res.setHeader('Access-Control-Allow-Origin', '*');
-                res.setHeader('Access-Control-Allow-Methods', '*');
-                next();
-              },
-            ];
-          }
-        }
+livereload: {
+    options: {
+      open: true,
+      middleware: function (connect) {
+        var middlewares = [
+            //Enable CORS
+connect().use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  next();
+})
+            connect.static('.tmp'),
+            connect().use(
+              '/bower_components',
+              connect.static('./bower_components')
+            ),
+            connect.static(appConfig.app)
+          ];
+        return middlewares;
       }
     }
-  });
+  }
 
 $(document).ready(function() {
 	setUp();
